@@ -20,6 +20,12 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+
+//when you go to "/"
+//he will get HOMEController
+//and find index anction
+//in index action he will return onlu return View();
+//so he will try to find in views folder with name as controller {home} some index.cshtml (same name as action)
 app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}")

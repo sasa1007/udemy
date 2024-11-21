@@ -12,7 +12,8 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+    
+    //when you gou to /home/index, home
     public IActionResult Index()
     {
         return View();
