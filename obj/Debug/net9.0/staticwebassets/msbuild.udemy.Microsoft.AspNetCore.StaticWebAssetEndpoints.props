@@ -757,16 +757,16 @@
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1097"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022kR0ThRjy07\u002Bhq4p08nfdkjN\u002BpI94Gj2rK5lyE0buITU=\u0022"},{"Name":"Last-Modified","Value":"Fri, 22 Nov 2024 20:33:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/udemy/udemy.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\udemy.wh6xm33c49.bundle.scp.css'))</AssetFile>
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\udemy.obieum2en0.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-JJGrwnnxCQ8hC4eK6VZmAi0\u002B\u002BGZA81WAmmHMsKD9TCc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1074"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022JJGrwnnxCQ8hC4eK6VZmAi0\u002B\u002BGZA81WAmmHMsKD9TCc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 22 Nov 2024 20:33:43 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ROpxWXKjF057w06OKEm4f/F52M5tTpnxlLTs/WXFWaQ="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1074"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ROpxWXKjF057w06OKEm4f/F52M5tTpnxlLTs/WXFWaQ=\u0022"},{"Name":"Last-Modified","Value":"Mon, 25 Nov 2024 15:06:18 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/udemy/udemy.wh6xm33c49.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\udemy.wh6xm33c49.bundle.scp.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/udemy/udemy.obieum2en0.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\udemy.obieum2en0.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wh6xm33c49"},{"Name":"integrity","Value":"sha256-JJGrwnnxCQ8hC4eK6VZmAi0\u002B\u002BGZA81WAmmHMsKD9TCc="},{"Name":"label","Value":"_content/udemy/udemy.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1074"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022JJGrwnnxCQ8hC4eK6VZmAi0\u002B\u002BGZA81WAmmHMsKD9TCc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 22 Nov 2024 20:33:43 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"obieum2en0"},{"Name":"integrity","Value":"sha256-ROpxWXKjF057w06OKEm4f/F52M5tTpnxlLTs/WXFWaQ="},{"Name":"label","Value":"_content/udemy/udemy.bundle.scp.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1074"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ROpxWXKjF057w06OKEm4f/F52M5tTpnxlLTs/WXFWaQ=\u0022"},{"Name":"Last-Modified","Value":"Mon, 25 Nov 2024 15:06:18 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>
