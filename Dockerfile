@@ -6,7 +6,10 @@ USER root
 
 # Install required dependencies
 RUN apt-get update && \
-    apt-get install -y curl gnupg2 apt-transport-https ca-certificates wget
+    apt-get install -y curl gnupg2 apt-transport-https ca-certificates wget 
+
+RUN apt-get update && apt-get install -y mysql-client
+
 
 # Download and add the Microsoft GPG key
 RUN wget https://packages.microsoft.com/keys/microsoft.asc -O /tmp/microsoft.asc && \
