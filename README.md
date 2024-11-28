@@ -5,3 +5,6 @@ dotnet ef database update
 
 
 dotnet ef migrations add AddCategoryTableToDb
+
+
+ctor - constructor
