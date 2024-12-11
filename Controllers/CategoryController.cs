@@ -27,6 +27,11 @@ public class CategoryController : Controller
     [HttpPost]
     public IActionResult Create(Category category)
     {
+        if (category.Name == category.DisplayOrder.ToString())
+        {
+            ModelState.AddModelError("DisplayOrder", "Display order no good");
+        }
+        
         if (!ModelState.IsValid)
         {
             _db.Categories.Add(category);
