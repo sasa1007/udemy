@@ -32,6 +32,11 @@ public class CategoryController : Controller
             ModelState.AddModelError("DisplayOrder", "Display order no good");
         }
         
+        if (category.Name != null && category.Name.ToLower() == "test")
+        {
+            ModelState.AddModelError("", "Test is invalid value");
+        }
+        
         if (!ModelState.IsValid)
         {
             _db.Categories.Add(category);
