@@ -13,9 +13,11 @@ public class Category
     
     [Required]
     [DisplayName("Category Name")]
+    [MaxLength(50)]
     public string Name { get; set; }
     
     [DisplayName("Display Order")]
+    [Range(10, 100, ErrorMessage = "Ne valja broj")] 
     public int DisplayOrder { get; set; }
     
 }
