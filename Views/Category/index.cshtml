@@ -18,6 +18,9 @@
             <th>
                 Display order
             </th>
+            <th>
+                Actions
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +29,16 @@
             <tr>
                 <td>@obj.Name</td>
                 <td>@obj.DisplayOrder</td>
+                <td>
+                    <div>
+                        <a asp-controller="Category" asp-action="Edit" class="btn btn-primary">
+                            Edit
+                        </a>
+                        <a asp-controller="Category" asp-action="Delete" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </div>
+                </td>
             </tr>
         }
         </tbody>
