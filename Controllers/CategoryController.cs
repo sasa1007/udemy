@@ -31,18 +31,36 @@ public class CategoryController : Controller
         {
             ModelState.AddModelError("DisplayOrder", "Display order no good");
         }
-        
-        if (category.Name != null && category.Name.ToLower() == "test")
-        {
-            ModelState.AddModelError("", "Test is invalid value");
-        }
-        
+
         if (!ModelState.IsValid)
         {
             _db.Categories.Add(category);
             _db.SaveChanges();
             return RedirectToAction("Index", "Category");
         }
+
         return View();
+    }
+
+    public IActionResult Edit(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+
+        Category? categoryToUpdate = _db.Categories.FirstOrDefault(c=> c.Id == id);
+
+        if (categoryToUpdate == null)
+        {
+            return NotFound();
+        }
+
+        return View(categoryToUpdate);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Category category)
+    {
     }
 }
