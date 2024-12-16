@@ -17,7 +17,7 @@ public class Category
     public string Name { get; set; }
     
     [DisplayName("Display Order")]
-    [Range(10, 100, ErrorMessage = "Ne valja broj")] 
+    [Range(0, 100, ErrorMessage = "Ne valja broj")] 
     public int DisplayOrder { get; set; }
     
 }

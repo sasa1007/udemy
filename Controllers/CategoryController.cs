@@ -27,15 +27,17 @@ public class CategoryController : Controller
     [HttpPost]
     public IActionResult Create(Category category)
     {
+        Console.WriteLine(category);
         if (category.Name == category.DisplayOrder.ToString())
         {
             ModelState.AddModelError("DisplayOrder", "Display order no good");
         }
-
+        
         if (!ModelState.IsValid)
         {
             _db.Categories.Add(category);
             _db.SaveChanges();
+            TempData["message"] = "Category added";
             return RedirectToAction("Index", "Category");
         }
 
@@ -65,6 +67,44 @@ public class CategoryController : Controller
         if (ModelState.IsValid)
         {
             _db.Categories.Update(category);
+            _db.SaveChanges();
+            TempData["message"] = "Category Edited";
+            return RedirectToAction("Index", "Category");
+        }
+        
+        return View();
+    }
+    
+    public IActionResult Delete(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+
+        Category? categoryToUpdate = _db.Categories.FirstOrDefault(c=> c.Id == id);
+
+        if (categoryToUpdate == null)
+        {
+            return NotFound();
+        }
+
+        return View(categoryToUpdate);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public IActionResult DeletePost(int? id)
+    {
+        Category? categoryToDelete = _db.Categories.FirstOrDefault(c=> c.Id == id);
+
+        if (categoryToDelete == null)
+        {
+            return NotFound();
+        }
+        
+        if (ModelState.IsValid)
+        {
+            _db.Categories.Remove(categoryToDelete);
             _db.SaveChanges();
             return RedirectToAction("Index", "Category");
         }
