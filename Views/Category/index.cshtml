@@ -31,7 +31,7 @@
                 <td>@obj.DisplayOrder</td>
                 <td>
                     <div>
-                        <a asp-controller="Category" asp-action="Edit" class="btn btn-primary">
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary">
                             Edit
                         </a>
                         <a asp-controller="Category" asp-action="Delete" class="btn btn-danger">
