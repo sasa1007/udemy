@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Razor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e34ce56fb237d12eab94ce4207ee304336e5044d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2ae78e206a373c794b32922d4a69a0531bdef44")]
 [assembly: System.Reflection.AssemblyProductAttribute("Razor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Razor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
