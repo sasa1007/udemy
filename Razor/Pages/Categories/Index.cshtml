@@ -1,0 +1,48 @@
+@page
+@model Razor.Pages.Category.Index
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Category list</h1>
+        </div>
+        <div class="col-6">
+            <a asp-page="/categories/create" class="btn btn-primary">New category</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped-columns">
+        <thead>
+        <tr>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Display order
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var obj in Model.CateforyList.OrderBy(u => u.DisplayOrder))
+        {
+            <tr>
+                <td>@obj.Name</td>
+                <td>@obj.DisplayOrder</td>
+                <td>
+                    <div>
+                        <a asp-page="category/edit" asp-route-id="@obj.Id" class="btn btn-primary">
+                            Edit
+                        </a>
+                        <a asp-page="category/delete" asp-route-id="@obj.Id" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
