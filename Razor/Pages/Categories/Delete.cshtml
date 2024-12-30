@@ -1,19 +1,25 @@
 @page
 @model Razor.Pages.Category.Delete
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
 <div>
-    
+    <h1>Delete Category</h1>
 </div>
-</body>
-</html>
+
+<form method="post">
+    @* if tour id is category id *@
+    <input asp-for="Category.Id" type="hidden"/>
+    <div class="mb-3">
+        <label asp-for="Category.Name"></label>
+        <input asp-for="Category.Name" class="form-control"/>
+        <span asp-validation-for="Category.Name" class="text-bg-danger"></span>
+    </div>
+    @* All, None *@
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="mb-3">
+        <label asp-for="Category.DisplayOrder"></label>
+        <input asp-for="Category.DisplayOrder" class="form-control"/>
+        <span asp-validation-for="Category.DisplayOrder" class="text-bg-danger"></span>
+    </div>
+    <button type="submit">Delete</button>
+    <a asp-controller="Category" asp-action="Index" class="btn btn-secondary border form-control">Back</a>
+</form>

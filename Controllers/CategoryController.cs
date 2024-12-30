@@ -4,7 +4,7 @@ using udemy.Models;
 
 namespace udemy.Controllers;
 
-public class CategoryController : Controller
+public class  CategoryController : Controller
 {
     private readonly AplicationDbContext _db;
 
