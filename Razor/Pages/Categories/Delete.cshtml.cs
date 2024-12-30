@@ -29,6 +29,7 @@ public class Delete : PageModel
     {
         _db.Categories.Remove(Category);
         _db.SaveChanges();
+        TempData["message"] = "Category deleted";
         return RedirectToPage("Index");
     }
 }

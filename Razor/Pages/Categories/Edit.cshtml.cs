@@ -28,6 +28,7 @@ public class Edit : PageModel
     {
         _db.Categories.Update(Category);
         _db.SaveChanges();
+        TempData["message"] = "Category edited";
         return RedirectToPage("Index");
     }
 }
