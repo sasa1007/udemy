@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using udemy.Data;
+using Udemy.DataAccess.Data;
 using udemy.Models;
 
 namespace udemy.Controllers;

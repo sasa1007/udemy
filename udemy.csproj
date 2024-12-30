@@ -4,48 +4,23 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Migrations\" />
+        <Folder Include="Udemy.Utility\"/>
     </ItemGroup>
 
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="UdemyRazon\appsettings.Development.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\appsettings.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Properties\launchSettings.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Pages\Error.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Pages\Index.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Pages\Privacy.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Pages\Shared\_Layout.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Pages\Shared\_ValidationScriptsPartial.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Pages\_ViewImports.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazon\Pages\_ViewStart.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\appsettings.Development.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\appsettings.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\obj\project.assets.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\obj\project.packagespec.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\obj\UdemyRazor.csproj.nuget.dgspec.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Properties\launchSettings.json" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Pages\Error.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Pages\Index.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Pages\Privacy.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Pages\Shared\_Layout.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Pages\Shared\_ValidationScriptsPartial.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Pages\_ViewImports.cshtml" />
-      <_ContentIncludedByDefault Remove="UdemyRazor\Pages\_ViewStart.cshtml" />
-    </ItemGroup>
 
 </Project>

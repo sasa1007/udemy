@@ -1,0 +1,16 @@
+/Back Up/Net/udemy/Udemy.DataAccess/bin/Debug/net9.0/Udemy.DataAccess.deps.json
+/Back Up/Net/udemy/Udemy.DataAccess/bin/Debug/net9.0/Udemy.DataAccess.dll
+/Back Up/Net/udemy/Udemy.DataAccess/bin/Debug/net9.0/Udemy.DataAccess.pdb
+/Back Up/Net/udemy/Udemy.DataAccess/bin/Debug/net9.0/Udemy.Models.dll
+/Back Up/Net/udemy/Udemy.DataAccess/bin/Debug/net9.0/Udemy.Utility.dll
+/Back Up/Net/udemy/Udemy.DataAccess/bin/Debug/net9.0/Udemy.Models.pdb
+/Back Up/Net/udemy/Udemy.DataAccess/bin/Debug/net9.0/Udemy.Utility.pdb
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/Udemy.DataAccess.csproj.AssemblyReference.cache
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/Udemy.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/Udemy.DataAccess.csproj.CoreCompileInputs.cache
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/Udemy.DataAccess.sourcelink.json
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/Udemy.Da.559E2368.Up2Date
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/Udemy.DataAccess.dll
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/refint/Udemy.DataAccess.dll
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/Udemy.DataAccess.pdb
+/Back Up/Net/udemy/Udemy.DataAccess/obj/Debug/net9.0/ref/Udemy.DataAccess.dll
