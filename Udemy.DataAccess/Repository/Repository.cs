@@ -11,39 +11,39 @@ public class Repository<T> : IRepository<T> where T : class
 {
     private readonly AplicationDbContext _db;
 
-    internal DbSet<T> dbSet;
+    internal DbSet<T> DbSet;
 
     public Repository(AplicationDbContext dbContext)
     {
         _db = dbContext;
-        this.dbSet = _db.Set<T>();
+        this.DbSet = _db.Set<T>();
     }
 
     public IEnumerable<T> GetAll()
     {
-        IQueryable<T> query = dbSet;
+        IQueryable<T> query = DbSet;
         return query.ToList();
     }
 
     public T Get(Expression<Func<T, bool>> filter)
     {
-        IQueryable<T> query = dbSet;
+        IQueryable<T> query = DbSet;
         query = query.Where(filter);
         return query.FirstOrDefault();
     }
 
     public void Create(T entity)
     {
-        dbSet.Add(entity);
+        DbSet.Add(entity);
     }
 
     public void Delete(T entity)
     {
-        dbSet.Remove(entity);
+        DbSet.Remove(entity);
     }
 
     public void DeleteRange(IEnumerable<T> entity)
     {
-        dbSet.RemoveRange(entity);
+        DbSet.RemoveRange(entity);
     }
 }
