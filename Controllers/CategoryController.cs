@@ -1,21 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Udemy.DataAccess.Data;
 using udemy.Models;
+using udemy.Udemy.DataAccess.Repository;
 
 namespace udemy.Controllers;
 
-public class  CategoryController : Controller
+public class CategoryController : Controller
 {
-    private readonly AplicationDbContext _db;
+    private readonly ICategoryRepository _categoryRepository;
 
-    public CategoryController(AplicationDbContext dbContext)
+    public CategoryController(ICategoryRepository dbContext)
     {
-        _db = dbContext;
+        _categoryRepository = dbContext;
     }
 
     public IActionResult Index()
     {
-        List<Category> categories = _db.Categories.ToList();
+        List<Category> categories = _categoryRepository.GetAll().ToList();
         return View(categories);
     }
 
@@ -32,11 +33,11 @@ public class  CategoryController : Controller
         {
             ModelState.AddModelError("DisplayOrder", "Display order no good");
         }
-        
+
         if (!ModelState.IsValid)
         {
-            _db.Categories.Add(category);
-            _db.SaveChanges();
+            _categoryRepository.Create(category);
+            _categoryRepository.Save();
             TempData["message"] = "Category added";
             return RedirectToAction("Index", "Category");
         }
@@ -51,12 +52,7 @@ public class  CategoryController : Controller
             return NotFound();
         }
 
-        Category? categoryToUpdate = _db.Categories.FirstOrDefault(c=> c.Id == id);
-
-        if (categoryToUpdate == null)
-        {
-            return NotFound();
-        }
+        Category? categoryToUpdate = _categoryRepository.Get(c => c.Id == id);
 
         return View(categoryToUpdate);
     }
@@ -66,15 +62,15 @@ public class  CategoryController : Controller
     {
         if (ModelState.IsValid)
         {
-            _db.Categories.Update(category);
-            _db.SaveChanges();
+            _categoryRepository.Update(category);
+            _categoryRepository.Save();
             TempData["message"] = "Category Edited";
             return RedirectToAction("Index", "Category");
         }
-        
+
         return View();
     }
-    
+
     public IActionResult Delete(int? id)
     {
         if (id == null || id == 0)
@@ -82,33 +78,24 @@ public class  CategoryController : Controller
             return NotFound();
         }
 
-        Category? categoryToUpdate = _db.Categories.FirstOrDefault(c=> c.Id == id);
+        Category? categoryToDelete = _categoryRepository.Get(c => c.Id == id);
 
-        if (categoryToUpdate == null)
-        {
-            return NotFound();
-        }
 
-        return View(categoryToUpdate);
+        return View(categoryToDelete);
     }
 
     [HttpPost, ActionName("Delete")]
     public IActionResult DeletePost(int? id)
     {
-        Category? categoryToDelete = _db.Categories.FirstOrDefault(c=> c.Id == id);
+        Category? categoryToDelete = _categoryRepository.Get(c => c.Id == id);
 
-        if (categoryToDelete == null)
-        {
-            return NotFound();
-        }
-        
         if (ModelState.IsValid)
         {
-            _db.Categories.Remove(categoryToDelete);
-            _db.SaveChanges();
+            _categoryRepository.Delete(categoryToDelete);
+            _categoryRepository.Save();
             return RedirectToAction("Index", "Category");
         }
-        
+
         return View();
     }
 }
