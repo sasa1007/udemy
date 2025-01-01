@@ -9,7 +9,6 @@ namespace udemy.Udemy.DataAccess.Repository;
 public class CategoryRepository : Repository<Category>, ICategoryRepository
 {
     private AplicationDbContext _db;
-
     public CategoryRepository(AplicationDbContext dbContext) : base(dbContext)
     {
         _db = dbContext;
@@ -20,8 +19,4 @@ public class CategoryRepository : Repository<Category>, ICategoryRepository
         _db.Categories.Update(category);
     }
 
-    public void Save()
-    {
-        _db.SaveChanges();
-    }
 }

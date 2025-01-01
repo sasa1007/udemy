@@ -1,0 +1,10 @@
+/Back Up/Net/udemy/Udemy.Models/bin/Debug/net8.0/Udemy.Models.deps.json
+/Back Up/Net/udemy/Udemy.Models/bin/Debug/net8.0/Udemy.Models.dll
+/Back Up/Net/udemy/Udemy.Models/bin/Debug/net8.0/Udemy.Models.pdb
+/Back Up/Net/udemy/Udemy.Models/obj/Debug/net8.0/Udemy.Models.GeneratedMSBuildEditorConfig.editorconfig
+/Back Up/Net/udemy/Udemy.Models/obj/Debug/net8.0/Udemy.Models.csproj.CoreCompileInputs.cache
+/Back Up/Net/udemy/Udemy.Models/obj/Debug/net8.0/Udemy.Models.sourcelink.json
+/Back Up/Net/udemy/Udemy.Models/obj/Debug/net8.0/Udemy.Models.dll
+/Back Up/Net/udemy/Udemy.Models/obj/Debug/net8.0/refint/Udemy.Models.dll
+/Back Up/Net/udemy/Udemy.Models/obj/Debug/net8.0/Udemy.Models.pdb
+/Back Up/Net/udemy/Udemy.Models/obj/Debug/net8.0/ref/Udemy.Models.dll
