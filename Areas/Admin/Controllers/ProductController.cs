@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using udemy.Models;
+using udemy.Models.ViewModels;
 using udemy.Udemy.DataAccess.Repository;
 
 namespace udemy.Areas.Admin.Controllers;
@@ -16,13 +18,23 @@ public class ProductController : Controller
 
     public IActionResult Index()
     {
-        List<Product> categories = _unitOfWork.Product.GetAll().ToList();
-        return View(categories);
+        List<Product> products = _unitOfWork.Product.GetAll().ToList();
+
+        return View(products);
     }
 
     public IActionResult Create()
     {
-        return View();
+        ProductVm productVm = new()
+        {
+            CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            {
+                Value = u.Id.ToString(),
+                Text = u.Name
+            }),
+            Product = new Product()
+        };
+        return View(productVm);
     }
 
     [HttpPost]

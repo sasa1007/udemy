@@ -31,7 +31,9 @@ public class AplicationDbContext : DbContext
                 Price = 1,
                 Price50 = 2,
                 Price100 = 3,
-                ListPrice = 4
+                ListPrice = 4,
+                ImageUrl = ""
+
             },
             new Product
             {
@@ -43,7 +45,9 @@ public class AplicationDbContext : DbContext
                 Price = 5,
                 Price50 = 6,
                 Price100 = 7,
-                ListPrice = 8
+                ListPrice = 8,
+                ImageUrl = ""
+
             },
             new Product
             {
@@ -55,7 +59,8 @@ public class AplicationDbContext : DbContext
                 Price = 9,
                 Price50 = 10,
                 Price100 = 11,
-                ListPrice = 12
+                ListPrice = 12,
+                ImageUrl = ""
             }
         );
     }

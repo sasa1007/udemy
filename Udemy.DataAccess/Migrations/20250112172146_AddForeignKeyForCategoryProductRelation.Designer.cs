@@ -2,17 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Udemy.DataAccess.Data;
 
 #nullable disable
 
-namespace udemy.Migrations
+namespace Udemy.DataAccess.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250112172146_AddForeignKeyForCategoryProductRelation")]
+    partial class AddForeignKeyForCategoryProductRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,10 +86,6 @@ namespace udemy.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Isbn")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -121,7 +120,6 @@ namespace udemy.Migrations
                             Id = 1,
                             Author = "author1",
                             Description = "description1",
-                            ImageUrl = "",
                             Isbn = "isbn1",
                             ListPrice = 4.0,
                             Name = "Name1",
@@ -134,7 +132,6 @@ namespace udemy.Migrations
                             Id = 2,
                             Author = "author2",
                             Description = "description2",
-                            ImageUrl = "",
                             Isbn = "isbn2",
                             ListPrice = 8.0,
                             Name = "Name2",
@@ -147,7 +144,6 @@ namespace udemy.Migrations
                             Id = 3,
                             Author = "author3",
                             Description = "description3",
-                            ImageUrl = "",
                             Isbn = "isbn3",
                             ListPrice = 12.0,
                             Name = "Name3",

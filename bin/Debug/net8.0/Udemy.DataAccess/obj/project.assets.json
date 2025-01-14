@@ -1019,7 +1019,10 @@
         },
         "runtime": {
           "bin/placeholder/Udemy.Models.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Udemy.Utility/1.0.0": {
         "type": "project",
