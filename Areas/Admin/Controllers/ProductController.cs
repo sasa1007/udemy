@@ -38,17 +38,24 @@ public class ProductController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Product product)
+    public IActionResult Create(ProductVm productVm)
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.Product.Create(product);
+            _unitOfWork.Product.Create(productVm.Product);
             _unitOfWork.Save();
             TempData["message"] = "Category added";
             return RedirectToAction("Index", "Product");
         }
-
-        return View();
+        else
+        {
+            productVm.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            {
+                Value = u.Id.ToString(),
+                Text = u.Name
+            });
+            return View(productVm);
+        }
     }
 
     public IActionResult Edit(int? id)
