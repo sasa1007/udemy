@@ -20,14 +20,13 @@ public class ProductController : Controller
 
     public IActionResult Index()
     {
-        List<Product> products = _unitOfWork.Product.GetAll().ToList();
+        List<Product> products = _unitOfWork.Product.GetAll(include:"Category").ToList();
 
         return View(products);
     }
 
     public IActionResult Upsert(int? id)
     {
-
         ProductVm productVm = new()
         {
             CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
@@ -43,7 +42,7 @@ public class ProductController : Controller
         }
         else
         {
-            productVm.Product = _unitOfWork.Product.Get(u=>u.Id==id);
+            productVm.Product = _unitOfWork.Product.Get(u => u.Id == id);
             return View(productVm);
         }
     }
@@ -59,13 +58,31 @@ public class ProductController : Controller
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                 string productPath = Path.Combine(wwwrootPath, @"images/product");
 
+                if (!string.IsNullOrEmpty(productVm.Product.ImageUrl))
+                {
+                    var oldImagePath = Path.Combine(wwwrootPath, productVm.Product.ImageUrl);
+
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
                 using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
                 {
                     file.CopyTo(fileStream);
                 }
                 productVm.Product.ImageUrl = @"images\product\" + fileName;
             }
-            _unitOfWork.Product.Create(productVm.Product);
+
+            if (productVm.Product.Id == 0)
+            {
+                _unitOfWork.Product.Create(productVm.Product);
+            }
+            else
+            {
+                _unitOfWork.Product.Update(productVm.Product);
+            }
+
             _unitOfWork.Save();
             TempData["message"] = "Category added";
             return RedirectToAction("Index", "Product");

@@ -4,9 +4,6 @@ using Udemy.DataAccess.Data;
 
 namespace udemy.Udemy.DataAccess.Repository;
 
-
-
-
 public class Repository<T> : IRepository<T> where T : class
 {
     private readonly AplicationDbContext _db;
@@ -17,18 +14,34 @@ public class Repository<T> : IRepository<T> where T : class
     {
         _db = dbContext;
         this.DbSet = _db.Set<T>();
+        _db.Products.Include(u => u.Category);
     }
 
-    public IEnumerable<T> GetAll()
+    public IEnumerable<T> GetAll(string? include = null)
     {
         IQueryable<T> query = DbSet;
+        if (!string.IsNullOrWhiteSpace(include))
+        {
+            foreach (var includeProperty in include.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+        }
+
         return query.ToList();
     }
 
-    public T Get(Expression<Func<T, bool>> filter)
+    public T Get(Expression<Func<T, bool>> filter, string? include = null)
     {
         IQueryable<T> query = DbSet;
         query = query.Where(filter);
+        if (!string.IsNullOrWhiteSpace(include))
+        {
+            foreach (var includeProperty in include.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+        }
         return query.FirstOrDefault();
     }
 
