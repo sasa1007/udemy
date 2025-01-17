@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using udemy.Models;
 
 namespace Udemy.DataAccess.Data;
 
-public class AplicationDbContext : DbContext
+public class AplicationDbContext : IdentityDbContext<IdentityUser>
 {
     public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options)
     {
@@ -12,8 +14,12 @@ public class AplicationDbContext : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
 
+    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Category>().HasData(
             new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
             new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
@@ -61,7 +67,13 @@ public class AplicationDbContext : DbContext
                 Price100 = 11,
                 ListPrice = 12,
                 ImageUrl = ""
-            }
-        );
+            });
+
+        // modelBuilder.Entity<ApplicationUser>().HasData(
+        //     new ApplicationUser(
+        //     {
+        //         name=1
+        //     })
+        // );
     }
 }
