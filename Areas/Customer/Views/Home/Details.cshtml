@@ -1,0 +1,27 @@
+@model Product
+
+
+<div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    @Model.Name
+                </div>
+                <div class="col-md-4">
+                    @Model.Author
+                </div>
+                <div class="col-md-4">
+                    @Model.Category.Name
+                </div>
+                <div class="col-md-4">
+                    @Html.Raw(@Model.Description)
+                </div>
+                @* <div class="col-md-4"> *@
+                @*     <img src="@("\\" + product.ImageUrl)"> *@
+                @* </div> *@
+            </div>
+            <a asp-action="Index">Back</a>
+        </div>
+
+</div>

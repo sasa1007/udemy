@@ -98,19 +98,6 @@ public class ProductController : Controller
         }
     }
 
-    public IActionResult Delete(int? id)
-    {
-        if (id == null || id == 0)
-        {
-            return NotFound();
-        }
-
-        Product? productToDelete = _unitOfWork.Product.Get(c => c.Id == id);
-
-
-        return View(productToDelete);
-    }
-
     [HttpPost, ActionName("Delete")]
     public IActionResult DeletePost(int? id)
     {
@@ -124,5 +111,34 @@ public class ProductController : Controller
         }
 
         return View();
+    }
+
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        List<Product> products = _unitOfWork.Product.GetAll(include:"Category").ToList();
+
+        return Json(new {data = products});
+    }
+
+
+    public IActionResult Delete(int? id)
+    {
+        var productToDelete = _unitOfWork.Product.Get(c => c.Id == id);
+
+        if (productToDelete == null)
+        {
+            return Json(new { message = "Product not found." });
+        }
+
+        var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, productToDelete.ImageUrl);
+
+        if (System.IO.File.Exists(oldImagePath))
+        {
+            System.IO.File.Delete(oldImagePath);
+        }
+        _unitOfWork.Product.Delete(productToDelete);
+        _unitOfWork.Save();
+        return Json(new { message = "Product deleted." });
     }
 }
