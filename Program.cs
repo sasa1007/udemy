@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Udemy.DataAccess.Data;
 using udemy.Udemy.DataAccess.Repository;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using udemy.Udemy.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +13,22 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AplicationDbContext>();
+
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+    {
+        options.LoginPath = $"/Identity/Account/Login";
+        options.LogoutPath = $"/Identity/Account/Logout";
+        options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+    }
+);
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-    
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+
 
 var app = builder.Build();
 
@@ -31,7 +45,6 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
-
 
 
 //net 9

@@ -8,3 +8,4 @@
 /Back Up/Net/udemy/Udemy.Utility/obj/Debug/net8.0/refint/Udemy.Utility.dll
 /Back Up/Net/udemy/Udemy.Utility/obj/Debug/net8.0/Udemy.Utility.pdb
 /Back Up/Net/udemy/Udemy.Utility/obj/Debug/net8.0/ref/Udemy.Utility.dll
+/Back Up/Net/udemy/Udemy.Utility/obj/Debug/net8.0/Udemy.Utility.csproj.AssemblyReference.cache
