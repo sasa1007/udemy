@@ -7,9 +7,6 @@ using udemy.Udemy.Utility;
 namespace udemy.Areas.Admin.Controllers;
 
 
-
-
-
 [Area("Admin")]
 [Authorize(Roles = SD.Role_Admin)]
 public class CategoryController : Controller
@@ -35,7 +32,6 @@ public class CategoryController : Controller
     [HttpPost]
     public IActionResult Create(Category category)
     {
-        Console.WriteLine(category);
         if (category.Name == category.DisplayOrder.ToString())
         {
             ModelState.AddModelError("DisplayOrder", "Display order no good");
