@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using udemy.Models;
 using udemy.Udemy.DataAccess.Repository;
@@ -26,8 +28,39 @@ public class HomeController : Controller
 
     public IActionResult Details(int id)
     {
-        Product product = _unitOfWork.Product.Get(u=>u.Id == id, include: "Category");
-        return View(product);
+        ShopingCart cart = new()
+        {
+            Product = _unitOfWork.Product.Get(u => u.Id == id, include: "Category"),
+            Count = 1,
+            ProductId = id
+        };
+        return View(cart);
+    }
+
+    [HttpPost]
+    [Authorize]
+    public IActionResult Details(ShopingCart shopingCart)
+    {
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+        shopingCart.ApplicationUserId = userId;
+        shopingCart.Id = 0;
+        ShopingCart shopingCartFromDb =
+            _unitOfWork.ShopingCart.Get(u => u.ApplicationUserId == userId && u.ProductId == shopingCart.ProductId);
+
+        if (shopingCartFromDb != null)
+        {
+            shopingCartFromDb.Count += shopingCartFromDb.Count;
+            _unitOfWork.ShopingCart.Update(shopingCartFromDb);
+        }
+        else
+        {
+            _unitOfWork.ShopingCart.Create(shopingCart);
+        }
+
+        _unitOfWork.Save();
+
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()

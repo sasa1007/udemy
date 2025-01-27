@@ -1,0 +1,34 @@
+@model ShoppingCartVm
+<h2>Shoping Cart</h2>
+
+
+<h2>Title</h2>
+
+<form method="post">
+    <div>
+        <a asp-area="Customer" asp-controller="Home" asp-action="Index">
+            continue shopping
+        </a>
+        <br>
+        <br>
+    </div>
+    <div>
+        @foreach (var item in Model.ShopingCartList) {
+            <p>Title: @item.Product.Name</p>
+            <p>Description: @Html.Raw(item.Product.Name)</p>
+            <p>PRice: @item.Price.ToString("c")</p>
+
+            <a asp-action="plus" asp-route-cartId="@item.Id">PLUS</a> <br>
+            <a asp-action="minus" asp-route-cartId="@item.Id">MINUS</a> <br>
+            <a asp-action="remove" asp-route-cartId="@item.Id">remove</a><br>
+            <hr>
+        }
+    </div>
+<hr>
+    <div>
+        <p>Total : @Model.OrderHeader.OrderTotal.ToString("c")</p>
+    </div>
+    <div>
+        <a asp-action="Summary">summary</a>
+    </div>
+</form>

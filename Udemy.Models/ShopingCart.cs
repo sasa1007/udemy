@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
@@ -5,7 +6,7 @@ namespace udemy.Models;
 
 public class ShopingCart
 {
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
 
         public int ProductId { get; set; }
 
@@ -15,11 +16,14 @@ public class ShopingCart
 
         public int Count { get; set; }
 
-        public string ApplicationUserUserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         [ValidateNever]
-        [ForeignKey("ApplicationUserUserId")]
+        [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
+
+        [NotMapped]
+        public double Price { get; set; }
 
 
 }

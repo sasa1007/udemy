@@ -7,18 +7,15 @@ namespace Udemy.DataAccess.Data;
 
 public class AplicationDbContext : IdentityDbContext<IdentityUser>
 {
-    public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options)
-    {
-    }
+    public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options) { }
 
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
-
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
     public DbSet<Company> Companies { get; set; }
-
     public DbSet<ShopingCart> ShopingCarts { get; set; }
+    public DbSet<OrderHeader> OrderHeaders { get; set; }
+    public DbSet<OrderDetail> OrderDetails { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,9 +28,21 @@ public class AplicationDbContext : IdentityDbContext<IdentityUser>
         );
 
         modelBuilder.Entity<Company>().HasData(
-            new Company { Id = 4, Name = "Name4", StreetAddress = "StreetAddress4", City = "City4", State = "State4", ZipCode = "ZipCode4", PhoneNumber = "PhoneNumber4"},
-            new Company { Id = 2, Name = "Name2", StreetAddress = "StreetAddress2", City = "City2", State = "State2", ZipCode = "ZipCode2", PhoneNumber = "PhoneNumber2" },
-            new Company { Id = 3, Name = "Name3", StreetAddress = "StreetAddress3", City = "City3", State = "State3", ZipCode = "ZipCode3", PhoneNumber = "PhoneNumber3" }
+            new Company
+            {
+                Id = 4, Name = "Name4", StreetAddress = "StreetAddress4", City = "City4", State = "State4",
+                ZipCode = "ZipCode4", PhoneNumber = "PhoneNumber4"
+            },
+            new Company
+            {
+                Id = 2, Name = "Name2", StreetAddress = "StreetAddress2", City = "City2", State = "State2",
+                ZipCode = "ZipCode2", PhoneNumber = "PhoneNumber2"
+            },
+            new Company
+            {
+                Id = 3, Name = "Name3", StreetAddress = "StreetAddress3", City = "City3", State = "State3",
+                ZipCode = "ZipCode3", PhoneNumber = "PhoneNumber3"
+            }
         );
 
         modelBuilder.Entity<Product>().HasData(
@@ -49,7 +58,6 @@ public class AplicationDbContext : IdentityDbContext<IdentityUser>
                 Price100 = 3,
                 ListPrice = 4,
                 ImageUrl = ""
-
             },
             new Product
             {
@@ -63,7 +71,6 @@ public class AplicationDbContext : IdentityDbContext<IdentityUser>
                 Price100 = 7,
                 ListPrice = 8,
                 ImageUrl = ""
-
             },
             new Product
             {

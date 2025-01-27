@@ -1,0 +1,31 @@
+@model ShoppingCartVm
+<h2>Order summery</h2>
+<a asp-action="Index">Back to Cart</a>
+<form>
+    <h3>Shipping details</h3>
+    <label>Name</label>
+    <input asp-for="OrderHeader.Name"> <br><br>
+    <label>StreetAddress</label>
+    <input asp-for="OrderHeader.StreetAddress"><br><br>
+    <label>City</label>
+    <input asp-for="OrderHeader.City"><br><br>
+    <label>State</label>
+    <input asp-for="OrderHeader.State"><br><br>
+    <label>ZipCode</label>
+    <input asp-for="OrderHeader.ZipCode"><br><br>
+</form>
+@foreach (var cart in Model.ShopingCartList) {
+    <h6>Ime: @cart.Product.Name    </h6>
+    <p>Broj: @cart.Count</p>
+    <p>Ukupno: @((cart.Price * cart.Count).ToString("c"))</p>
+}
+<hr>
+<p>
+    Total: @Model.OrderHeader.OrderTotal.ToString("c")
+</p>
+
+<a asp-action="">Summary</a>
+
+<p>estimate day
+    @DateTime.Now.AddDays(7).ToShortDateString() - @DateTime.Now.AddDays(14).ToShortDateString()
+</p>

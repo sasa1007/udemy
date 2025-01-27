@@ -17,9 +17,14 @@ public class Repository<T> : IRepository<T> where T : class
         _db.Products.Include(u => u.Category);
     }
 
-    public IEnumerable<T> GetAll(string? include = null)
+    public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter, string? include = null)
     {
         IQueryable<T> query = DbSet;
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
         if (!string.IsNullOrWhiteSpace(include))
         {
             foreach (var includeProperty in include.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
@@ -31,17 +36,27 @@ public class Repository<T> : IRepository<T> where T : class
         return query.ToList();
     }
 
-    public T Get(Expression<Func<T, bool>> filter, string? include = null)
+    public T Get(Expression<Func<T, bool>> filter, string? include = null, bool tracked = false)
     {
-        IQueryable<T> query = DbSet;
-        query = query.Where(filter);
-        if (!string.IsNullOrWhiteSpace(include))
+        IQueryable<T> query;
+        if (tracked)
         {
-            foreach (var includeProperty in include.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+             query = DbSet;
+        }
+        else
+        {
+            query = DbSet.AsNoTracking();
+        }
+        query = query.Where(filter);
+        if (!string.IsNullOrEmpty(include))
+        {
+            foreach (var includeProperty in
+                     include.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 query = query.Include(includeProperty);
             }
         }
+
         return query.FirstOrDefault();
     }
 
