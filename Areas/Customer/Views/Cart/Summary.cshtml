@@ -24,7 +24,7 @@
     Total: @Model.OrderHeader.OrderTotal.ToString("c")
 </p>
 
-<a asp-action="">Summary</a>
+<a asp-controller="Cart" asp-action="Summary">Order complete</a>
 
 <p>estimate day
     @DateTime.Now.AddDays(7).ToShortDateString() - @DateTime.Now.AddDays(14).ToShortDateString()

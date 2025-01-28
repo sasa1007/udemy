@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "X9FxuMbzHFiWmm1XYjdqYLnN6dMg6RJc8XR1V1wSNWk0tUf1S6cyo4b+mLJscBmuq6qPwiQvx3EYfaSpw1IUOw==",
+  "dgSpecHash": "3hQ4a/xqFyk=",
   "success": true,
   "projectFilePath": "/Back Up/Net/udemy/udemy.csproj",
   "expectedPackageFiles": [
@@ -133,6 +133,7 @@
     "/home/backend2/.nuget/packages/nuget.projectmodel/6.11.0/nuget.projectmodel.6.11.0.nupkg.sha512",
     "/home/backend2/.nuget/packages/nuget.protocol/6.11.0/nuget.protocol.6.11.0.nupkg.sha512",
     "/home/backend2/.nuget/packages/nuget.versioning/6.11.0/nuget.versioning.6.11.0.nupkg.sha512",
+    "/home/backend2/.nuget/packages/stripe.net/47.3.0/stripe.net.47.3.0.nupkg.sha512",
     "/home/backend2/.nuget/packages/system.clientmodel/1.0.0/system.clientmodel.1.0.0.nupkg.sha512",
     "/home/backend2/.nuget/packages/system.codedom/6.0.0/system.codedom.6.0.0.nupkg.sha512",
     "/home/backend2/.nuget/packages/system.collections.immutable/8.0.0/system.collections.immutable.8.0.0.nupkg.sha512",

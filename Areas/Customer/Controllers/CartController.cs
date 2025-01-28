@@ -117,7 +117,7 @@ public class CartController : Controller
         ShoppingCartVm.OrderHeader.AplicationUserId = userId;
 
 
-        ShoppingCartVm.OrderHeader.ApplicationUser = _unitOfWork.AplicationUser.Get(u => u.Id == userId);
+        ApplicationUser apliApplicationUser = _unitOfWork.AplicationUser.Get(u => u.Id == userId);
         
         foreach (var cartItem in ShoppingCartVm.ShopingCartList)
         {
@@ -125,7 +125,7 @@ public class CartController : Controller
             ShoppingCartVm.OrderHeader.OrderTotal += (cartItem.Price * cartItem.Count);
         }
 
-        if (ShoppingCartVm.OrderHeader.ApplicationUser.CompanyId.GetValueOrDefault() == 0)
+        if (apliApplicationUser.CompanyId.GetValueOrDefault() == 0)
         {
             ShoppingCartVm.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
             ShoppingCartVm.OrderHeader.OrderStatus = SD.StatusPending;
@@ -151,14 +151,19 @@ public class CartController : Controller
             _unitOfWork.OrderDetail.Create(orderDetail);
             _unitOfWork.Save();
         }
-
+        if (apliApplicationUser.CompanyId.GetValueOrDefault() == 0)
         {
-
+//TODO
         }
 
-        return View(ShoppingCartVm);
+
+        return RedirectToAction(nameof(OrderConfirmation), new{id = ShoppingCartVm.OrderHeader.Id});
     }
 
+    public IActionResult OrderConfirmation(int id)
+    {
+        return View(id);
+    }
 
     private double getPriceBasedOnQuantity(ShopingCart shopingCart)
     {
